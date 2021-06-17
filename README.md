@@ -1,2 +1,2 @@
-# sdk-authentication
-ChalkySticks SDK for web-based clients dealing with user authentication
+# sdk-facts
+ChalkySticks SDK for web-based clients dealing with facts

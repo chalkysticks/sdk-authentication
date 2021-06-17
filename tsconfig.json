@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "dist"
+    },
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts",
+        "**/__tests__/*"
+    ],
+    "extends": "./node_modules/@chalkysticks/mrm-preset/tsconfig.json",
+    "include": [
+        "src/**/*"
+    ]
+}
