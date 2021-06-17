@@ -85,7 +85,7 @@ export default class ModelUser extends ModelBase {
      * @return string
      */
     public getPermissions(): number {
-        return this.attr('permissions');
+        return parseFloat(this.attr('permissions') as string);
     }
 
     /**
@@ -112,7 +112,7 @@ export default class ModelUser extends ModelBase {
      * @return string
      */
     public getStatus(): number {
-        return this.attr('status');
+        return parseFloat(this.attr('status') as string);
     }
 
     // endregion: Getters
