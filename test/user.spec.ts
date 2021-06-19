@@ -1,8 +1,6 @@
 import { expect } from 'chai';
+import ModelAuthentication from '../src/Model/Authentication';
 import ModelUser from '../src/Model/User';
-
-// Setup
-// ----------------------------------------------------------------------------
 
 const model: ModelUser = new ModelUser({
     id: 1,
@@ -133,7 +131,6 @@ const model: ModelUser = new ModelUser({
     },
 });
 
-
 /**
   ┌────────────────────────────────────────────────────────────────────────────┐
   │                                                                            │
@@ -143,11 +140,34 @@ const model: ModelUser = new ModelUser({
 */
 
 describe('User - Local', () => {
-
     it('should have a name', () => {
-        expect(model.getName())
-            .to
-            .equal('Matt Kenefick');
+        expect(model.getName()).to.equal('Matt Kenefick');
     });
+});
 
+describe('Auth - Local', () => {
+    it('should have jwt relationships', () => {
+        const auth: ModelAuthentication = new ModelAuthentication({
+            jwt: {
+                type: 'bearer',
+                token: 'MzM.PihJqt-z_xSrRbfWu_cKaCwriOfGZGxJ-AyE1UAEEuOm2sfXYOlLDMDi8S4u',
+            },
+            user: {
+                id: 1,
+                name: 'Billie Joe',
+                slug: 'billie-joe',
+                email: 'roger@chalkysticks.com',
+                phone: null,
+                latitude: null,
+                longitude: null,
+                status: 0,
+                permissions: 0,
+                created_at: '2021-06-15T11:53:28.000-04:00',
+                updated_at: '2021-06-15T14:17:59.000-04:00',
+            },
+        });
+
+        expect(auth.jwt.getType()).to.equal('bearer');
+        expect(auth.user.getEmail()).to.equal('roger@chalkysticks.com');
+    });
 });

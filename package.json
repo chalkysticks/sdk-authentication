@@ -4,15 +4,16 @@
         "url": "https://github.com/chalkysticks/sdk-authentication/issues"
     },
     "description": "ChalkySticks SDK core for web-based clients for User Authentication",
-    "devDependencies": {
+    "dependencies": {
         "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
-        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
+    },
+    "devDependencies": {
         "@types/chai": "^4.2.14",
         "@types/mocha": "^8.2.0",
         "@typescript-eslint/eslint-plugin": "^4.13.0",
         "@typescript-eslint/parser": "^4.13.0",
         "chai": "^4.2.0",
-        "eloquent-js": "github:mattkenefick/eloquentjs#v2",
         "eslint": "^7.17.0",
         "husky": "^6.0.0",
         "mocha": "^8.2.1",
@@ -46,5 +47,5 @@
         "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts"
     },
     "types": "dist/index.d.ts",
-    "version": "1.0.8"
+    "version": "1.0.9"
 }
