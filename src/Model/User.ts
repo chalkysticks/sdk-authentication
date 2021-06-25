@@ -116,5 +116,4 @@ export default class ModelUser extends ModelBase {
     }
 
     // endregion: Getters
-
 }
