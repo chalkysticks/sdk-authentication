@@ -213,8 +213,8 @@
   resolved "https://codeload.github.com/chalkysticks/mrm-preset/tar.gz/33ace06ba57d1c7a5317f16361159436a7e47a89"
 
 "@chalkysticks/sdk-core@github:chalkysticks/sdk-core":
-  version "1.0.2"
-  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/1c358cf1d59f060ccb7a95447214e24c1d6ca315"
+  version "1.0.3"
+  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/f5baf2b62354224202b00f1907a95d89f6123930"
   dependencies:
     "@chalkysticks/mrm-preset" "github:chalkysticks/mrm-preset"
     eloquent-js "github:mattkenefick/eloquentjs#v2"
