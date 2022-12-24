@@ -55,14 +55,14 @@
     "scripts": {
         "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && yarn build:web",
         "build:web": "./node_modules/.bin/esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
-        "buildx": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && bash ./tool/create-packages.sh",
         "coverage": "nyc npm test",
         "example": "http-server",
         "lint": "eslint \"src/**/*.ts\"",
         "prepare": "husky install",
         "prettier": "prettier -c src/**/*.ts",
-        "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts"
+        "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts",
+        "version": "git add -A src"
     },
     "types": "dist/index.d.ts",
-    "version": "1.0.14"
+    "version": "1.0.15"
 }

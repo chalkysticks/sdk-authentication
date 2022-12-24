@@ -3,15 +3,9 @@ import { Request } from 'restmc';
 import ModelJwt from './Jwt';
 
 /**
- * ┌────────────────────────────────────────────────────────────────────────────┐
- * │                                                                            │
- * │ ModelAuthentication                                                        │
- * │                                                                            │
- * │ @namespace Model                                                           │
- * │ @package   SDK-Authentication                                              │
- * │ @project   ChalkySticks                                                    │
- * │                                                                            │
- * └────────────────────────────────────────────────────────────────────────────┘
+ * @class ModelUser
+ * @package Model
+ * @project ChalkySticks SDK Authentication
  */
 export default class ModelAuthentication extends ModelBase {
     /**

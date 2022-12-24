@@ -1,15 +1,10 @@
 import { ModelBase } from '@chalkysticks/sdk-core';
 
+
 /**
- * ┌────────────────────────────────────────────────────────────────────────────┐
- * │                                                                            │
- * │ ModelJwt                                                                   │
- * │                                                                            │
- * │ @namespace Model                                                           │
- * │ @package   SDK-Authentication                                              │
- * │ @project   ChalkySticks                                                    │
- * │                                                                            │
- * └────────────────────────────────────────────────────────────────────────────┘
+ * @class ModelJwt
+ * @package Model
+ * @project ChalkySticks SDK Authentication
  */
 export default class ModelJwt extends ModelBase {
     /**
