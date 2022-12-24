@@ -19,10 +19,7 @@ class ModelAuthentication extends sdk_core_1.ModelBase {
         return this.hasOne('user', User_1.default);
     }
     login(email, password) {
-        return this
-            .post({ email, password })
-            .then((e) => {
-        });
+        return this.post({ email, password });
     }
     loginSocial(provider = 'google') {
         const redirect_to = location.href;

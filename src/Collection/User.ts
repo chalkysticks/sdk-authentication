@@ -12,19 +12,19 @@ import ModelUser from '../Model/User';
  * │                                                                            │
  * └────────────────────────────────────────────────────────────────────────────┘
  */
-export default class CollectionUser extends CollectionBase {
-    /**
-     * Endpoint key
-     * e.g. https://api.chalkysticks.com/v1/user
-     *
-     * @type string
-     */
-    public endpoint: string = 'user';
+export default class CollectionUser extends CollectionBase<ModelUser> {
+	/**
+	 * Endpoint key
+	 * e.g. https://api.chalkysticks.com/v1/user
+	 *
+	 * @type string
+	 */
+	public endpoint: string = 'user';
 
-    /**
-     * Model object instantiated by this collection
-     *
-     * @type ModelUser
-     */
-    public model: any = ModelUser;
+	/**
+	 * Model object instantiated by this collection
+	 *
+	 * @type ModelUser
+	 */
+	public model: ModelUser = new ModelUser();
 }

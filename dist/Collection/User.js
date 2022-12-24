@@ -6,7 +6,7 @@ class CollectionUser extends sdk_core_1.CollectionBase {
     constructor() {
         super(...arguments);
         this.endpoint = 'user';
-        this.model = User_1.default;
+        this.model = new User_1.default();
     }
 }
 exports.default = CollectionUser;

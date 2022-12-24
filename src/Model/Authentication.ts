@@ -1,4 +1,5 @@
 import { ModelBase } from '@chalkysticks/sdk-core';
+import { Request } from 'restmc';
 import ModelJwt from './Jwt';
 import ModelUser from './User';
 
@@ -16,7 +17,7 @@ import ModelUser from './User';
 export default class ModelAuthentication extends ModelBase {
     /**
      * Endpoint key
-     * e.g. https://api.chalkysticks.com/v3/diagram
+     * e.g. https://api.chalkysticks.com/v3/auth/basic/login
      *
      * @type string
      */
@@ -32,7 +33,6 @@ export default class ModelAuthentication extends ModelBase {
         'user',
     ];
 
-
     // region: Relationships
     // ---------------------------------------------------------------------------
 
@@ -46,7 +46,6 @@ export default class ModelAuthentication extends ModelBase {
 
     // endregion: Relationships
 
-
     // region: Actions
     // ---------------------------------------------------------------------------
 
@@ -56,17 +55,15 @@ export default class ModelAuthentication extends ModelBase {
      * @param string provider
      * @return void
      */
-    public login(email: string, password: string): Promise<any> {
-        return this
-            .post({ email, password })
-            .then((e) => {
-                // console.log('sup bro', e);
-            });
+    public login(email: string, password: string): Promise<Request> {
+        return this.post({ email, password });
     }
 
     /**
      * Login via social network
      *
+	 * @todo @critical Swap out localhost URL
+	 *
      * @param string provider
      * @return void
      */

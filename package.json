@@ -3,11 +3,11 @@
     "bugs": {
         "url": "https://github.com/chalkysticks/sdk-authentication/issues"
     },
-    "description": "ChalkySticks SDK core for web-based clients for User Authentication",
     "dependencies": {
         "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
         "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
     },
+    "description": "ChalkySticks SDK core for web-based clients for User Authentication",
     "devDependencies": {
         "@types/chai": "^4.2.14",
         "@types/mocha": "^8.2.0",
@@ -31,7 +31,7 @@
         "chalkysticks",
         "pool"
     ],
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "main": "./dist/index.js",
     "name": "@chalkysticks/sdk-authentication",
     "repository": {
@@ -41,11 +41,11 @@
     "scripts": {
         "build": "tsc",
         "coverage": "nyc npm test",
-        "lint": "eslint \"**\\*.ts\"",
+        "lint": "eslint \"src/**/*.ts\"",
         "prepare": "husky install",
         "prettier": "prettier -c src/**/*.ts",
         "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts"
     },
     "types": "dist/index.d.ts",
-    "version": "1.0.12"
+    "version": "1.0.13"
 }

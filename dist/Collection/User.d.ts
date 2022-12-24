@@ -1,5 +1,6 @@
 import { CollectionBase } from '@chalkysticks/sdk-core';
-export default class CollectionUser extends CollectionBase {
+import ModelUser from '../Model/User';
+export default class CollectionUser extends CollectionBase<ModelUser> {
     endpoint: string;
-    model: any;
+    model: ModelUser;
 }
