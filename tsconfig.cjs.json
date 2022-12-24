@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "build/cjs",
+    },
+    "extends": "./node_modules/@chalkysticks/mrm-preset/tsconfig.cjs.json",
+    "include": [
+        "src/**/*.ts",
+    ]
+  }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ChalkySticks SDK Authentication Example</title>
+
+		<link rel="icon" href="https://static.chalkysticks.com/favicon.png" />
+	</head>
+	<body>
+		<main>
+			<form>
+				<fieldset>
+					<label>
+						<input name="email" placeholder="Email Address" type="email" />
+					</label>
+					<label>
+						<input name="password" placeholder="Password" type="password" />
+					</label>
+				</fieldset>
+
+				<button>Login</button>
+			</form>
+		</main>
+
+		<!-- Script -->
+		<script>
+			window.env = {
+				app: {
+					api_url: 'https://api.chalkysticks.com/v1',
+				},
+			};
+		</script>
+		<script type="module">
+			import { ModelAuthentication, ModelUser } from '../build/web/chalkysticks-auth.js';
+
+			const form = document.querySelector('form');
+
+			/**
+			 * @param SubmitEvent e
+			 * @return Promise<void>
+			 */
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+
+				const formData = new FormData(e.currentTarget);
+				const json = Object.fromEntries(formData);
+
+				// Create auth module
+				const auth = new ModelAuthentication();
+
+				// Attempt to login
+				try {
+					const userModel = await auth.login(json.email, json.password);
+
+					// Read response
+					console.log('User:', userModel.getName());
+				} catch (e) {
+					console.log('Could not login:', e.message);
+				}
+			});
+		</script>
+	</body>
+</html>

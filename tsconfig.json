@@ -1,20 +1,9 @@
 {
     "compilerOptions": {
-        "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-        "module": "commonjs",
-        "target": "es6",
-        "outDir": "dist"
+        "outDir": "build/esm",
     },
-    "exclude": [
-        "dist",
-        "node_modules",
-        "test"
-    ],
     "extends": "./node_modules/@chalkysticks/mrm-preset/tsconfig.mjs.json",
-    "files": [
-        "./src/Definition/Interface.d.ts"
-    ],
     "include": [
-        "./src/**/*"
+        "src/**/*.ts",
     ]
-}
+  }

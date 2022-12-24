@@ -5,7 +5,8 @@
     },
     "dependencies": {
         "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
-        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
+        "esbuild": "^0.16.10"
     },
     "description": "ChalkySticks SDK core for web-based clients for User Authentication",
     "devDependencies": {
@@ -21,8 +22,20 @@
         "ts-mocha": "^8.0.0",
         "typescript": "^4.1.3"
     },
+    "exports": {
+        ".": {
+            "import": "./build/esm/index.js",
+            "require": "./build/cjs/index.js"
+        }
+    },
     "files": [
-        "dist",
+        "!**/*.spec.*",
+        "!**/*.json",
+        "build/esm",
+        "build/module",
+        "build/web",
+        "CHANGELOG.md",
+        "LICENSE",
         "README.md"
     ],
     "homepage": "https://www.chalkysticks.com",
@@ -32,20 +45,24 @@
         "pool"
     ],
     "license": "GPL-3.0-or-later",
-    "main": "./dist/index.js",
+    "main": "./build/cjs/index.js",
+    "module": "./build/esm/index.js",
     "name": "@chalkysticks/sdk-authentication",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/chalkysticks/sdk-authentication.git"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && yarn build:web",
+        "build:web": "./node_modules/.bin/esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
+        "buildx": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && bash ./tool/create-packages.sh",
         "coverage": "nyc npm test",
+        "example": "http-server",
         "lint": "eslint \"src/**/*.ts\"",
         "prepare": "husky install",
         "prettier": "prettier -c src/**/*.ts",
         "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts"
     },
     "types": "dist/index.d.ts",
-    "version": "1.0.13"
+    "version": "1.0.14"
 }

@@ -1,7 +1,6 @@
-import { ModelBase } from '@chalkysticks/sdk-core';
+import { ModelBase, ModelUser, StoreProvider } from '@chalkysticks/sdk-core';
 import { Request } from 'restmc';
 import ModelJwt from './Jwt';
-import ModelUser from './User';
 
 /**
  * ┌────────────────────────────────────────────────────────────────────────────┐
@@ -21,7 +20,7 @@ export default class ModelAuthentication extends ModelBase {
      *
      * @type string
      */
-    public endpoint: string = 'auth/basic/login';
+    public endpoint: string = 'auth/login';
 
     /**
      * List of fields available
@@ -53,10 +52,27 @@ export default class ModelAuthentication extends ModelBase {
      * Login via basic
      *
      * @param string provider
-     * @return void
+     * @return Promise<Request>
      */
-    public login(email: string, password: string): Promise<Request> {
-        return this.post({ email, password });
+    public async login(email: string, password: string): Promise<ModelUser> {
+		return new Promise((resolve, reject) => {
+        	this.post({ email, password })
+				.then((request: Request) => {
+					const permissions: string = request.response?.data.permissions;
+					const token: string = request.response?.data.token;
+					const userModel: ModelUser = ModelUser.hydrate(request.response?.data.user) as ModelUser;
+
+					// Save token
+					StoreProvider.get().state.token = token;
+
+					// Resolve user
+					resolve(userModel);
+				})
+				.catch((request: Request) => {
+					const errorData = request.response?.data;
+					reject(errorData);
+				});
+		});
     }
 
     /**
