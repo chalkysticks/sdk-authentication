@@ -203,7 +203,7 @@
 
 "@chalkysticks/sdk-core@github:chalkysticks/sdk-core":
   version "1.1.1"
-  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/7412e6014cfc838bde1e14c1fc7f14e863b1b882"
+  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/b29083457e573059d95c0e6bd275949654b4097a"
   dependencies:
     "@chalkysticks/mrm-preset" "github:chalkysticks/mrm-preset"
     esbuild "^0.16.10"
@@ -454,9 +454,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "18.11.17"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.17.tgz#5c009e1d9c38f4a2a9d45c0b0c493fe6cdb4bcb5"
-  integrity sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==
+  version "18.11.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
+  integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
 
 "@typescript-eslint/eslint-plugin@^4.13.0":
   version "4.33.0"
