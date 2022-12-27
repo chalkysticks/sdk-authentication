@@ -1,6 +1,5 @@
 import { ModelBase } from '@chalkysticks/sdk-core';
 
-
 /**
  * @class ModelJwt
  * @package Model
