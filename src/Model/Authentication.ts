@@ -50,7 +50,6 @@ export default class ModelAuthentication extends ModelBase {
 
 	// endregion: Getters
 
-
     // region: Actions
     // ---------------------------------------------------------------------------
 
@@ -71,11 +70,21 @@ export default class ModelAuthentication extends ModelBase {
 					// Save token
 					StoreProvider.get().state.token = token;
 
+					// Trigger events
+					this.trigger('login', { userModel });
+					this.trigger('login:success', { userModel });
+
 					// Resolve user
 					resolve(userModel);
 				})
 				.catch((request: Request) => {
 					const errorData = request.response?.data;
+
+					// Trigger events
+					this.trigger('login:error', { error: errorData });
+					this.trigger('login:failure', { error: errorData });
+
+					// Reject user
 					reject(errorData);
 				});
 		});

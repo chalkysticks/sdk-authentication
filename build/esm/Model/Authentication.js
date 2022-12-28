@@ -23,10 +23,14 @@ export default class ModelAuthentication extends ModelBase {
                 const token = request.response?.data.token;
                 const userModel = ModelUser.hydrate(request.response?.data.user);
                 StoreProvider.get().state.token = token;
+                this.trigger('login', { userModel });
+                this.trigger('login:success', { userModel });
                 resolve(userModel);
             })
                 .catch((request) => {
                 const errorData = request.response?.data;
+                this.trigger('login:error', { error: errorData });
+                this.trigger('login:failure', { error: errorData });
                 reject(errorData);
             });
         });
