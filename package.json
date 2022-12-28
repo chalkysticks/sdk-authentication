@@ -53,7 +53,7 @@
         "url": "git+https://github.com/chalkysticks/sdk-authentication.git"
     },
     "scripts": {
-        "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && yarn build:web",
+        "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && yarn build:web && bash ./tool/create-packages.sh",
         "build:web": "./node_modules/.bin/esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
         "coverage": "nyc npm test",
         "example": "http-server",
@@ -64,5 +64,5 @@
         "version": "git add -A src"
     },
     "types": "build/esm/index.d.ts",
-    "version": "1.0.19"
+    "version": "1.0.20"
 }
