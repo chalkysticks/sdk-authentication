@@ -203,7 +203,7 @@
 
 "@chalkysticks/sdk-core@github:chalkysticks/sdk-core":
   version "1.1.1"
-  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/b29083457e573059d95c0e6bd275949654b4097a"
+  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/655bf2a7e4ba6540fcd93bd1c3ba139055054671"
   dependencies:
     "@chalkysticks/mrm-preset" "github:chalkysticks/mrm-preset"
     esbuild "^0.16.10"
@@ -2040,7 +2040,7 @@ resolve-from@^5.0.0:
 
 "restmc@git+https://github.com/mattkenefick/restmc.git":
   version "0.8.0"
-  resolved "git+https://github.com/mattkenefick/restmc.git#55fc1b54b71309491049135acebcd62a9f704098"
+  resolved "git+https://github.com/mattkenefick/restmc.git#f6113daf6a8bc175fa4a56f6d11a000a8c48df8e"
   dependencies:
     "@types/node-fetch" "^2.5.7"
     axios "^0.21.4"
