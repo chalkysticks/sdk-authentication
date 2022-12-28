@@ -9,7 +9,6 @@ import ModelJwt from './Jwt';
  */
 export default class ModelAuthentication extends ModelBase {
     /**
-     * Endpoint key
      * e.g. https://api.chalkysticks.com/v3/auth/basic/login
      *
      * @type string
@@ -38,6 +37,19 @@ export default class ModelAuthentication extends ModelBase {
     }
 
     // endregion: Relationships
+
+	// region: Getters
+	// ---------------------------------------------------------------------------
+
+	/**
+	 * @return boolean
+	 */
+	public isLoggedIn(): boolean {
+		return !!this.user?.id;
+	}
+
+	// endregion: Getters
+
 
     // region: Actions
     // ---------------------------------------------------------------------------
