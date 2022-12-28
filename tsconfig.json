@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+        "module": "esnext",
         "outDir": "build/esm",
+        "target": "esnext"
     },
     "extends": "./node_modules/@chalkysticks/mrm-preset/tsconfig.mjs.json",
     "include": [
