@@ -5,6 +5,7 @@ export default class ModelAuthentication extends ModelBase {
     fields: string[];
     get jwt(): ModelJwt;
     get user(): ModelUser;
+    isLoggedIn(): boolean;
     login(email: string, password: string): Promise<ModelUser>;
     loginSocial(provider?: string): void;
 }

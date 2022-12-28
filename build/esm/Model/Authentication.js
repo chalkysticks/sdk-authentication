@@ -12,6 +12,9 @@ export default class ModelAuthentication extends ModelBase {
     get user() {
         return this.hasOne('user', ModelUser);
     }
+    isLoggedIn() {
+        return !!this.user?.id;
+    }
     async login(email, password) {
         return new Promise((resolve, reject) => {
             this.post({ email, password })

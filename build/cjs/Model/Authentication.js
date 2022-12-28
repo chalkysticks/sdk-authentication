@@ -26,6 +26,10 @@ class ModelAuthentication extends sdk_core_1.ModelBase {
     get user() {
         return this.hasOne('user', sdk_core_1.ModelUser);
     }
+    isLoggedIn() {
+        var _a;
+        return !!((_a = this.user) === null || _a === void 0 ? void 0 : _a.id);
+    }
     login(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
