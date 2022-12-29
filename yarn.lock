@@ -203,7 +203,7 @@
 
 "@chalkysticks/sdk-core@github:chalkysticks/sdk-core":
   version "1.1.1"
-  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/7ed3aefcf8018db771ed5c837aa567e0163cd977"
+  resolved "https://codeload.github.com/chalkysticks/sdk-core/tar.gz/d829d704e3d201ad0b84078adb923ff973d2fe13"
   dependencies:
     "@chalkysticks/mrm-preset" "github:chalkysticks/mrm-preset"
     esbuild "^0.16.10"
