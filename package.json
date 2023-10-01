@@ -60,9 +60,8 @@
         "lint": "eslint \"src/**/*.ts\"",
         "prepare": "husky install",
         "prettier": "prettier -c src/**/*.ts",
-        "reinstall": "rm -rf ./node_modules/; rm yarn.lock; yarn install; yarn build",
-        "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts",
-        "version": "git stash; npm version minor; git stash pop;"
+        "reinstall": "rm -rf ./node_modules/ && rm yarn.lock && yarn && yarn build",
+        "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts"
     },
     "types": "build/esm/index.d.ts",
     "version": "1.4.0"
