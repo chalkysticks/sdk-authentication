@@ -1,6 +1,4 @@
-export { default as CollectionUser } from '@chalkysticks/sdk-core';
 export { default as Core } from '@chalkysticks/sdk-core';
-export { default as ModelAuthentication } from './Model/Authentication';
-export { default as ModelJwt } from './Model/Jwt';
-export { default as ModelUser } from '@chalkysticks/sdk-core';
-//# sourceMappingURL=index.js.map
+export { Collection } from '@chalkysticks/sdk-core';
+export * as Model from './Model';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLE9BQU8sSUFBSSxJQUFJLEVBQUUsTUFBTSx3QkFBd0IsQ0FBQztBQUN6RCxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sd0JBQXdCLENBQUM7QUFFcEQsT0FBTyxLQUFLLEtBQUssTUFBTSxTQUFTLENBQUMifQ==

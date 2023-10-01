@@ -5,8 +5,7 @@
     },
     "dependencies": {
         "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
-        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
-        "esbuild": "^0.16.10"
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
     },
     "description": "ChalkySticks SDK core for web-based clients for User Authentication",
     "devDependencies": {
@@ -15,6 +14,7 @@
         "@typescript-eslint/eslint-plugin": "^4.13.0",
         "@typescript-eslint/parser": "^4.13.0",
         "chai": "^4.2.0",
+        "esbuild": "^0.16.10",
         "eslint": "^7.17.0",
         "husky": "^6.0.0",
         "mocha": "^8.2.1",
@@ -65,5 +65,5 @@
         "version": "git stash; npm version minor; git stash pop;"
     },
     "types": "build/esm/index.d.ts",
-    "version": "1.3.0"
+    "version": "1.4.0"
 }

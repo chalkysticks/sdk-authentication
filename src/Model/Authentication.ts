@@ -1,13 +1,13 @@
-import { ModelBase, ModelUser, StoreProvider } from '@chalkysticks/sdk-core';
+import { Jwt } from './Jwt';
+import { Model, Provider } from '@chalkysticks/sdk-core';
 import { Request } from 'restmc';
-import ModelJwt from './Jwt';
 
 /**
- * @class ModelUser
+ * @class Authentication
  * @package Model
  * @project ChalkySticks SDK Authentication
  */
-export default class ModelAuthentication extends ModelBase {
+export class Authentication extends Model.Base {
     /**
      * e.g. https://api.chalkysticks.com/v3/auth/basic/login
      *
@@ -28,12 +28,12 @@ export default class ModelAuthentication extends ModelBase {
     // region: Relationships
     // ---------------------------------------------------------------------------
 
-    public get jwt(): ModelJwt {
-        return this.hasOne('jwt', ModelJwt);
+    public get jwt(): Jwt {
+        return this.hasOne<Jwt>('jwt', Jwt);
     }
 
-    public get user(): ModelUser {
-        return this.hasOne('user', ModelUser);
+    public get user(): Model.User {
+        return this.hasOne<Model.User>('user', Model.User);
     }
 
     // endregion: Relationships
@@ -59,30 +59,30 @@ export default class ModelAuthentication extends ModelBase {
      * @param string provider
      * @return Promise<Request>
      */
-    public async login(email: string, password: string): Promise<ModelUser> {
+    public async login(email: string, password: string): Promise<Model.User> {
 		return new Promise((resolve, reject) => {
-        	this.post({ email, password })
+			this.post({ email, password })
 				.then((request: Request) => {
 					const permissions: string = request.response?.data.permissions;
 					const token: string = request.response?.data.token;
-					const userModel: ModelUser = ModelUser.hydrate(request.response?.data.user) as ModelUser;
+					const userModel: Model.User = Model.User.hydrate(request.response?.data.user) as Model.User;
 
 					// Save token
-					StoreProvider.get().state.token = token;
+					Provider.Store.get().state.token = token;
 
 					// Trigger events
 					this.trigger('login', { userModel });
-					this.trigger('login:success', { userModel });
 
 					// Resolve user
 					resolve(userModel);
 				})
 				.catch((request: Request) => {
-					const errorData = request.response?.data;
+					const errorData = Object.assign(request.response?.data, {
+						code: request.response?.status || 0,
+					});
 
 					// Trigger events
 					this.trigger('login:error', { error: errorData });
-					this.trigger('login:failure', { error: errorData });
 
 					// Reject user
 					reject(errorData);

@@ -1,6 +1,6 @@
-import ModelUser from '../src/Model/User';
+import { Model } from '../../src';
 
-const model: ModelUser = new ModelUser({
+const model: Model.User = new Model.User({
     id: 1,
     name: 'Matt Kenefick',
     slug: 'matt-kenefick',

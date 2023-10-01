@@ -1,11 +1,11 @@
-import { ModelBase } from '@chalkysticks/sdk-core';
+import { Model } from '@chalkysticks/sdk-core';
 
 /**
- * @class ModelJwt
+ * @class Jwt
  * @package Model
  * @project ChalkySticks SDK Authentication
  */
-export default class ModelJwt extends ModelBase {
+export class Jwt extends Model.Base {
     /**
      * List of fields available
      *

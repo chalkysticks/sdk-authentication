@@ -1,5 +1,5 @@
-import { ModelBase } from '@chalkysticks/sdk-core';
-export default class ModelJwt extends ModelBase {
+import { Model } from '@chalkysticks/sdk-core';
+export declare class Jwt extends Model.Base {
     fields: string[];
     getToken(): string;
     getType(): string;
