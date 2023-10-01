@@ -22,14 +22,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Model = exports.Collection = exports.Core = void 0;
-var sdk_core_1 = require("@chalkysticks/sdk-core");
-Object.defineProperty(exports, "Core", { enumerable: true, get: function () { return __importDefault(sdk_core_1).default; } });
-var sdk_core_2 = require("@chalkysticks/sdk-core");
-Object.defineProperty(exports, "Collection", { enumerable: true, get: function () { return sdk_core_2.Collection; } });
+exports.Model = exports.Core = void 0;
+exports.Core = __importStar(require("@chalkysticks/sdk-core"));
 exports.Model = __importStar(require("./Model"));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxtREFBeUQ7QUFBaEQsaUhBQUEsT0FBTyxPQUFRO0FBQ3hCLG1EQUFvRDtBQUEzQyxzR0FBQSxVQUFVLE9BQUE7QUFFbkIsaURBQWlDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSwrREFBK0M7QUFDL0MsaURBQWlDIn0=
