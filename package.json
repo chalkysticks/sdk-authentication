@@ -4,11 +4,11 @@
         "url": "https://github.com/chalkysticks/sdk-authentication/issues"
     },
     "dependencies": {
-        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
+        "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset"
     },
     "description": "ChalkySticks SDK core for web-based clients for User Authentication",
     "devDependencies": {
-        "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
         "@types/chai": "^4.2.14",
         "@types/mocha": "^8.2.0",
         "@typescript-eslint/eslint-plugin": "^4.13.0",
@@ -24,8 +24,7 @@
     },
     "exports": {
         ".": {
-            "import": "./build/esm/index.js",
-            "require": "./build/cjs/index.js"
+            "import": "./build/esm/index.js"
         }
     },
     "files": [
@@ -45,7 +44,6 @@
         "pool"
     ],
     "license": "GPL-3.0-or-later",
-    "main": "./build/cjs/index.js",
     "module": "./build/esm/index.js",
     "name": "@chalkysticks/sdk-authentication",
     "repository": {
@@ -53,13 +51,10 @@
         "url": "git+https://github.com/chalkysticks/sdk-authentication.git"
     },
     "scripts": {
-        "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && yarn build:web && bash ./tool/create-packages.sh",
+        "build": "tsc -p tsconfig.json && yarn build:web",
         "build:web": "./node_modules/.bin/esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
         "coverage": "nyc npm test",
         "example": "http-server",
-        "lint": "eslint \"src/**/*.ts\"",
-        "prepare": "husky install",
-        "prettier": "prettier -c src/**/*.ts",
         "reinstall": "rm -rf ./node_modules/ && rm yarn.lock && yarn && yarn build",
         "test": "ts-mocha -p ./node_modules/@chalkysticks/mrm-preset/tsconfig.test.json test/**/*.spec.ts"
     },
