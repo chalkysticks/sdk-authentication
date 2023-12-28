@@ -1,44 +1,38 @@
-import { expect } from 'chai';
+import test from 'node:test';
+import assert from 'node:assert/strict';
 import { Model } from '../src';
 import userModel from './data/user';
 
-/**
-  ┌────────────────────────────────────────────────────────────────────────────┐
-  │                                                                            │
-  │ Local tests                                                                │
-  │                                                                            │
-  └────────────────────────────────────────────────────────────────────────────┘
-*/
-
-describe('User - Local', () => {
-	it('should have a name', () => {
-		expect(userModel.getName()).to.equal('Matt Kenefick');
-	});
+test('hello', () => {
+	const message = 'Hello';
+	assert.equal(message, 'Hello', 'checking the greeting');
 });
 
-describe('Auth - Local', () => {
-	it('should have jwt relationships', () => {
-		const auth: Model.Authentication = new Model.Authentication({
-			jwt: {
-				token: 'MzM.PihJqt-z_xSrRbfWu_cKaCwriOfGZGxJ-AyE1UAEEuOm2sfXYOlLDMDi8S4u',
-				type: 'bearer',
-			},
-			user: {
-				created_at: '2021-06-15T11:53:28.000-04:00',
-				email: 'roger@chalkysticks.com',
-				id: 1,
-				latitude: null,
-				longitude: null,
-				name: 'Billie Joe',
-				permissions: 0,
-				phone: null,
-				slug: 'billie-joe',
-				status: 0,
-				updated_at: '2021-06-15T14:17:59.000-04:00',
-			},
-		});
+test('User - Local should have a name', () => {
+	assert.equal(userModel.getName(), 'Matt Kenefick');
+});
 
-		// expect(auth.jwt.getType()).to.equal('bearer');
-		// expect(auth.user.getEmail()).to.equal('roger@chalkysticks.com');
+test('Auth - Local', () => {
+	const auth: Model.Authentication = new Model.Authentication({
+		jwt: {
+			token: 'MzM.PihJqt-z_xSrRbfWu_cKaCwriOfGZGxJ-AyE1UAEEuOm2sfXYOlLDMDi8S4u',
+			type: 'bearer',
+		},
+		user: {
+			created_at: '2021-06-15T11:53:28.000-04:00',
+			email: 'roger@chalkysticks.com',
+			id: 1,
+			latitude: null,
+			longitude: null,
+			name: 'Billie Joe',
+			permissions: 0,
+			phone: null,
+			slug: 'billie-joe',
+			status: 0,
+			updated_at: '2021-06-15T14:17:59.000-04:00',
+		},
 	});
+
+	assert.equal(auth.jwt.getType(), 'bearer');
+	assert.equal(auth.user.getEmail(), 'roger@chalkysticks.com');
 });

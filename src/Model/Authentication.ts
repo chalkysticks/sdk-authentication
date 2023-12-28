@@ -1,6 +1,5 @@
 import { Jwt } from './Jwt';
-import { Model, Provider } from '@chalkysticks/sdk-core';
-import { Request } from 'restmc';
+import { Model, Provider, Request } from '@chalkysticks/sdk-core';
 
 /**
  * @class Authentication
@@ -8,35 +7,32 @@ import { Request } from 'restmc';
  * @project ChalkySticks SDK Authentication
  */
 export class Authentication extends Model.Base {
-    /**
-     * e.g. https://api.chalkysticks.com/v3/auth/basic/login
-     *
-     * @type string
-     */
-    public endpoint: string = 'auth/login';
+	/**
+	 * e.g. https://api.chalkysticks.com/v3/auth/basic/login
+	 *
+	 * @type string
+	 */
+	public endpoint: string = 'auth/login';
 
-    /**
-     * List of fields available
-     *
-     * @type string[]
-     */
-     public fields: string[] = [
-        'jwt',
-        'user',
-    ];
+	/**
+	 * List of fields available
+	 *
+	 * @type string[]
+	 */
+	public fields: string[] = ['jwt', 'user'];
 
-    // region: Relationships
-    // ---------------------------------------------------------------------------
+	// region: Relationships
+	// ---------------------------------------------------------------------------
 
-    public get jwt(): Jwt {
-        return this.hasOne<Jwt>('jwt', Jwt);
-    }
+	public get jwt(): Jwt {
+		return this.hasOne<Jwt>('jwt', Jwt);
+	}
 
-    public get user(): Model.User {
-        return this.hasOne<Model.User>('user', Model.User);
-    }
+	public get user(): Model.User {
+		return this.hasOne<Model.User>('user', Model.User);
+	}
 
-    // endregion: Relationships
+	// endregion: Relationships
 
 	// region: Getters
 	// ---------------------------------------------------------------------------
@@ -50,16 +46,16 @@ export class Authentication extends Model.Base {
 
 	// endregion: Getters
 
-    // region: Actions
-    // ---------------------------------------------------------------------------
+	// region: Actions
+	// ---------------------------------------------------------------------------
 
-    /**
-     * Login via basic
-     *
-     * @param string provider
-     * @return Promise<Request>
-     */
-    public async login(email: string, password: string): Promise<Model.User> {
+	/**
+	 * Login via basic
+	 *
+	 * @param string provider
+	 * @return Promise<Request>
+	 */
+	public async login(email: string, password: string): Promise<Model.User> {
 		return new Promise((resolve, reject) => {
 			this.post({ email, password })
 				.then((request: Request) => {
@@ -88,22 +84,22 @@ export class Authentication extends Model.Base {
 					reject(errorData);
 				});
 		});
-    }
+	}
 
-    /**
-     * Login via social network
-     *
+	/**
+	 * Login via social network
+	 *
 	 * @todo @critical Swap out localhost URL
 	 *
-     * @param string provider
-     * @return void
-     */
-    public loginSocial(provider: string = 'google'): void {
-        const redirect_to: string = location.href;
-        const redirect_url: string = 'http://localhost:3333/auth/' + provider + '/redirect?redirect_to=' + redirect_to;
+	 * @param string provider
+	 * @return void
+	 */
+	public loginSocial(provider: string = 'google'): void {
+		const redirect_to: string = location.href;
+		const redirect_url: string = 'http://localhost:3333/auth/' + provider + '/redirect?redirect_to=' + redirect_to;
 
-        location.href = redirect_url;
-    }
+		location.href = redirect_url;
+	}
 
-    // endregion: Actions
+	// endregion: Actions
 }

@@ -44,7 +44,10 @@
 			};
 		</script>
 		<script type="module">
-			import { Model } from '../build/web/chalkysticks-auth.js';
+			import * as Auth from '../build/web/chalkysticks-auth.js';
+
+			// Log
+			console.log('ChalkySticks Auth', Auth);
 
 			// References
 			const form = document.querySelector('form');
@@ -63,13 +66,13 @@
 				window.env.app.api_url = json.api;
 
 				// Create a new authentication model
-				const authModel = new Model.Authentication();
+				const authModel = new Auth.Model.Authentication();
 
 				// Using promises
 				let userModel = authModel
 					.login(json.email, json.password)
 					.then((userModel) => {
-						console.log('User:', userModel.getName());
+						console.log('User:', userModel.getName(), userModel);
 					})
 					.catch((e) => {
 						console.log('Could not login:', e.code, e.message);
