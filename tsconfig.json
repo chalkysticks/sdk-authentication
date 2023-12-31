@@ -3,6 +3,6 @@
 		"outDir": "build/esm",
 		"rootDir": "src"
 	},
-	"extends": "./node_modules/@chalkysticks/mrm-preset/tsconfig.mjs.json",
+	"extends": "../../node_modules/@chalkysticks/mrm-preset/tsconfig.mjs.json",
 	"include": ["./src/**/*"]
 }
