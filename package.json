@@ -1,56 +1,57 @@
 {
-	"author": "ChalkySticks LLC",
-	"bugs": {
-		"url": "https://github.com/chalkysticks/sdk-authentication/issues"
-	},
-	"dependencies": {
-		"@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset"
-	},
-	"description": "ChalkySticks SDK core for web-based clients for User Authentication",
-	"devDependencies": {
-		"@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
-		"@typescript-eslint/eslint-plugin": "^4.13.0",
-		"@typescript-eslint/parser": "^4.13.0",
-		"esbuild": "^0.19.11",
-		"eslint": "^7.17.0",
-		"tsx": "^4.7.0",
-		"typescript": "^5.3.3"
-	},
-	"exports": {
-		".": {
-			"import": "./build/esm/index.js"
-		}
-	},
-	"files": [
-		"!**/*.spec.*",
-		"!**/*.json",
-		"build/esm",
-		"build/module",
-		"build/web",
-		"CHANGELOG.md",
-		"LICENSE",
-		"README.md"
-	],
-	"homepage": "https://www.chalkysticks.com",
-	"keywords": [
-		"billiards",
-		"chalkysticks",
-		"pool"
-	],
-	"license": "GPL-3.0-or-later",
-	"module": "./build/esm/index.js",
-	"name": "@chalkysticks/sdk-authentication",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/chalkysticks/sdk-authentication.git"
-	},
-	"scripts": {
-		"build": "tsc -p tsconfig.json && yarn build:web",
-		"build:web": "esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
-		"example": "http-server",
-		"test": "tsc --noEmit && node --import tsx --test test/*.spec.ts"
-	},
-	"type": "module",
-	"types": "build/esm/index.d.ts",
-	"version": "1.4.1"
+    "author": "ChalkySticks LLC",
+    "bugs": {
+        "url": "https://github.com/chalkysticks/sdk-authentication/issues"
+    },
+    "dependencies": {
+        "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
+    },
+    "description": "ChalkySticks SDK core for web-based clients for User Authentication",
+    "devDependencies": {
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
+        "@typescript-eslint/eslint-plugin": "^4.13.0",
+        "@typescript-eslint/parser": "^4.13.0",
+        "esbuild": "^0.19.11",
+        "eslint": "^7.17.0",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.3"
+    },
+    "exports": {
+        ".": {
+            "import": "./build/esm/index.js"
+        }
+    },
+    "files": [
+        "!**/*.spec.*",
+        "!**/*.json",
+        "build/esm",
+        "build/module",
+        "build/web",
+        "CHANGELOG.md",
+        "LICENSE",
+        "README.md"
+    ],
+    "homepage": "https://www.chalkysticks.com",
+    "keywords": [
+        "billiards",
+        "chalkysticks",
+        "pool"
+    ],
+    "license": "GPL-3.0-or-later",
+    "module": "./build/esm/index.js",
+    "name": "@chalkysticks/sdk-authentication",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chalkysticks/sdk-authentication.git"
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.json && yarn build:web",
+        "build:web": "esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
+        "example": "http-server",
+        "test": "tsc --noEmit && node --import tsx --test test/*.spec.ts"
+    },
+    "type": "module",
+    "types": "build/esm/index.d.ts",
+    "version": "1.4.2"
 }

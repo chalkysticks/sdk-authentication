@@ -64,10 +64,12 @@ export class Authentication extends Model.Base {
 					const userModel: Model.User = Model.User.hydrate(request.response?.data.user) as Model.User;
 
 					// Save token
-					Provider.Store.get().state.token = token;
+					const store: IStore = Provider.Store.get();
+					store.state.token = token;
 
 					// Trigger events
 					this.trigger('login', { userModel });
+					this.trigger('success', { userModel });
 
 					// Resolve user
 					resolve(userModel);
@@ -79,6 +81,7 @@ export class Authentication extends Model.Base {
 
 					// Trigger events
 					this.trigger('login:error', { error: errorData });
+					this.trigger('error', { error: errorData });
 
 					// Reject user
 					reject(errorData);

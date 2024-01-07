@@ -4,5 +4,6 @@
 		"rootDir": "src"
 	},
 	"extends": "../../node_modules/@chalkysticks/mrm-preset/tsconfig.mjs.json",
+	"files": ["./types/index.d.ts"],
 	"include": ["./src/**/*"]
 }
