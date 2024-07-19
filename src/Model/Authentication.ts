@@ -63,9 +63,14 @@ export class Authentication extends Model.Base {
 					const token: string = request.response?.data.token;
 					const userModel: Model.User = Model.User.hydrate(request.response?.data.user) as Model.User;
 
-					// Save token
+					// Save assets directly AND through dispatch (intentional fallback flow)
 					const store: IStore = Provider.Store.get();
 					store.state.token = token;
+					store.state.user = request.response?.data.user;
+					store.dispatch('authentication/login', {
+						token: token,
+						user: request.response?.data.user,
+					});
 
 					// Trigger events
 					this.trigger('login', { userModel });
