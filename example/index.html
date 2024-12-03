@@ -13,11 +13,11 @@
 			<form>
 				<fieldset>
 					<label>
-						<input name="api" type="radio" value="http://localhost:7202" checked />
+						<input name="api" type="radio" value="http://localhost:8000/v3" checked />
 						<span>Local API</span>
 					</label>
 					<label>
-						<input name="api" type="radio" value="https://api.chalkysticks.com/v1" />
+						<input name="api" type="radio" value="https://api.chalkysticks.com/v3" />
 						<span>Remote API</span>
 					</label>
 				</fieldset>
@@ -33,13 +33,20 @@
 
 				<button>Login</button>
 			</form>
+
+			<hr />
+
+			<section>
+				<button id="btnLoginWithGoogle">Login with Google</button>
+				<button id="btnLoginWithFacebook">Login with Facebook</button>
+			</section>
 		</main>
 
 		<!-- Script -->
 		<script>
 			window.env = {
 				app: {
-					api_url: 'http://localhost:7202',
+					api_url: 'http://localhost:8000/v3',
 				},
 			};
 		</script>
@@ -89,6 +96,56 @@
 				// 	console.log('Could not login:', e.code, e.message);
 				// }
 			});
+
+			// Google Login
+			document.getElementById('btnLoginWithGoogle').addEventListener('click', async () => {
+				// Create a new authentication model
+				const authModel = new Auth.Model.Authentication();
+
+				// Using promises
+				let userModel = authModel
+					.loginWithGoogle(location.href)
+					.then((userModel) => {
+						console.log('User:', userModel.getName(), userModel);
+					})
+					.catch((e) => {
+						console.log('Could not login:', e.code, e.message);
+					});
+			});
+
+			// Facebook Login
+			document.getElementById('btnLoginWithFacebook').addEventListener('click', async () => {
+				// Create a new authentication model
+				const authModel = new Auth.Model.Authentication();
+
+				// Using promises
+				let userModel = authModel
+					.loginWithFacebook(location.href)
+					.then((userModel) => {
+						console.log('User:', userModel.getName(), userModel);
+					})
+					.catch((e) => {
+						console.log('Could not login:', e.code, e.message);
+					});
+			});
+
+			// Look for token
+			let token;
+
+			if ((token = Auth.Model.Authentication.getAuthToken())) {
+				// Create a new authentication model
+				const authModel = new Auth.Model.Authentication();
+
+				// Using promises
+				authModel
+					.loginWithToken(token)
+					.then((userModel) => {
+						console.log('User:', userModel.getName(), userModel);
+					})
+					.catch((e) => {
+						console.log('Could not login:', e.code, e.message);
+					});
+			}
 		</script>
 	</body>
 </html>
