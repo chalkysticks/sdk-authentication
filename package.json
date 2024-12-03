@@ -49,9 +49,11 @@
         "build": "tsc -p tsconfig.json && yarn build:web",
         "build:web": "esbuild src/index.ts --bundle --minify --sourcemap --target=chrome62 --format=esm --outfile=build/web/chalkysticks-auth.js",
         "example": "http-server",
-        "test": "tsc --noEmit && node --import tsx --test test/*.spec.ts"
+        "serve": "http-server",
+        "test": "tsc --noEmit && node --import tsx --test test/*.spec.ts",
+        "watch": "tsc -p tsconfig.json --watch"
     },
     "type": "module",
     "types": "build/esm/index.d.ts",
-    "version": "1.7.0"
+    "version": "1.7.1"
 }
