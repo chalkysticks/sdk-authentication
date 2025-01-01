@@ -69,11 +69,11 @@ export class Authentication extends Model.Base {
 		return new Promise((resolve, reject) => {
 			this.post({ email, password })
 				.then((request: Request) => {
-					const userModel: Model.User = this.handleResponse(request.response || {});
+					const userModel: Model.User = this.handleResponse(request.response?.data || {});
 					resolve(userModel);
 				})
 				.catch((request: Request) => {
-					const errorData = this.handleError(request.response || {});
+					const errorData = this.handleError(request.response?.data || {});
 					reject(errorData);
 				});
 		});
@@ -94,11 +94,11 @@ export class Authentication extends Model.Base {
 
 			this.post()
 				.then((request: Request) => {
-					const userModel: Model.User = this.handleResponse(request.response || {});
+					const userModel: Model.User = this.handleResponse(request.response?.data || {});
 					resolve(userModel);
 				})
 				.catch((request: Request) => {
-					const errorData = this.handleError(request.response || {});
+					const errorData = this.handleError(request.response?.data || {});
 					reject(errorData);
 				});
 		});
@@ -150,11 +150,11 @@ export class Authentication extends Model.Base {
 
 			this.post(options)
 				.then((request: Request) => {
-					const userModel: Model.User = this.handleResponse(request.response || {});
+					const userModel: Model.User = this.handleResponse(request.response?.data || {});
 					resolve(userModel);
 				})
 				.catch((request: Request) => {
-					const errorData = this.handleError(request.response || {});
+					const errorData = this.handleError(request.response?.data || {});
 					reject(errorData);
 				});
 		});
