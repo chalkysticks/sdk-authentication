@@ -41,6 +41,10 @@
     "license": "GPL-3.0-or-later",
     "module": "./build/esm/index.js",
     "name": "@chalkysticks/sdk-authentication",
+    "peerDependencies": {
+        "@capacitor/browser": "^6.0.2",
+        "@capacitor/core": "^6.2.0"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/chalkysticks/sdk-authentication.git"
@@ -55,5 +59,5 @@
     },
     "type": "module",
     "types": "build/esm/index.d.ts",
-    "version": "1.7.4"
+    "version": "1.7.5"
 }

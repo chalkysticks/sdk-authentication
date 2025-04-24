@@ -14,7 +14,7 @@ export declare class Authentication extends Model.Base {
     isLoggedIn(): boolean;
     login(email: string, password: string): Promise<Model.User>;
     loginWithToken(token: string): Promise<Model.User>;
-    loginSocial(provider?: string, redirectTo?: string): void;
+    loginSocial(provider?: string, redirectTo?: string): Promise<void>;
     loginWithGoogle(redirectTo?: string): void;
     loginWithFacebook(redirectTo?: string): void;
     signup(options: IAuthenticationSignupOptions): Promise<Model.User>;

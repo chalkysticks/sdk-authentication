@@ -105,17 +105,33 @@ export class Authentication extends Model.Base {
 	}
 
 	/**
-	 * Login via social network
+	 * Login via social network (using Capacitor or web)
 	 *
 	 * @param string provider
 	 * @param string redirectTo
-	 * @return void
+	 * @return Promise<void>
 	 */
-	public loginSocial(provider: string = 'google', redirectTo: string = '/'): void {
-		const baseUrl: string = this.b.getBaseUrl();
-		const authenticationUrl: string = `${baseUrl}/auth/${provider}?redirectTo=${encodeURIComponent(redirectTo)}`;
+	public async loginSocial(provider: string = 'google', redirectTo: string = '/'): Promise<void> {
+		const baseUrl = this.b.getBaseUrl();
+		const authenticationUrlRoot = `${baseUrl}/auth/${provider}?redirectTo=`;
 
-		location.href = authenticationUrl;
+		try {
+			const { Capacitor } = await import('@capacitor/core');
+			const { Browser } = await import('@capacitor/browser');
+
+			if (Capacitor.isNativePlatform()) {
+				const mobileRedirectUri = 'com.chalkysticks.app://oauth2redirect';
+				await Browser.open({
+					url: `${authenticationUrlRoot}${encodeURIComponent(mobileRedirectUri)}`,
+				});
+				return;
+			}
+		} catch (e) {
+			console.warn('[LoginSocial] Capacitor fallback:', e);
+		}
+
+		// Default to browser redirect (web)
+		location.href = `${authenticationUrlRoot}${encodeURIComponent(redirectTo)}`;
 	}
 
 	/**
