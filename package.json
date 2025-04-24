@@ -42,6 +42,7 @@
     "module": "./build/esm/index.js",
     "name": "@chalkysticks/sdk-authentication",
     "peerDependencies": {
+        "@byteowls/capacitor-oauth2": "^5.0.0",
         "@capacitor/browser": "^6.0.2",
         "@capacitor/core": "^6.2.0"
     },
@@ -59,5 +60,5 @@
     },
     "type": "module",
     "types": "build/esm/index.d.ts",
-    "version": "1.7.5"
+    "version": "1.7.6"
 }

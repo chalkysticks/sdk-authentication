@@ -1,3 +1,4 @@
+import * as OAuth from '../Service/OAuth';
 import { Jwt } from './Jwt';
 import { Model, Provider, Request } from '@chalkysticks/sdk-core';
 
@@ -120,10 +121,15 @@ export class Authentication extends Model.Base {
 			const { Browser } = await import('@capacitor/browser');
 
 			if (Capacitor.isNativePlatform()) {
-				const mobileRedirectUri = 'com.chalkysticks.app://oauth2redirect';
-				await Browser.open({
-					url: `${authenticationUrlRoot}${encodeURIComponent(mobileRedirectUri)}`,
-				});
+				const token: string = await OAuth.googleFromApp();
+
+				try {
+					const userModel = await this.loginWithToken(token);
+					this.dispatch('login:success', { userModel });
+				} catch (e) {
+					this.dispatch('login:failure', { error: e });
+				}
+
 				return;
 			}
 		} catch (e) {
