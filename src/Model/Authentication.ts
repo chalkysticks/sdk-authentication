@@ -112,7 +112,7 @@ export class Authentication extends Model.Base {
 	 * @return void
 	 */
 	public loginSocial(provider: string = 'google', redirectTo: string = '/'): void {
-		const baseUrl: string = this.baseUrl;
+		const baseUrl: string = this.b.getBaseUrl();
 		const authenticationUrl: string = `${baseUrl}/auth/${provider}?redirectTo=${encodeURIComponent(redirectTo)}`;
 
 		location.href = authenticationUrl;

@@ -10,7 +10,7 @@ export function model(options: Record<string, any> = {}): Model.Authentication {
 		undefined,
 		Object.assign(
 			{
-				baseUrl: Constants.API_URL_V1,
+				baseUrl: Constants.API_URL_V3,
 			},
 			options,
 		),
