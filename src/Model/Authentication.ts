@@ -61,6 +61,35 @@ export class Authentication extends Model.Base {
 	// ---------------------------------------------------------------------------
 
 	/**
+	 * Change password
+	 *
+	 * @param string currentPassword
+	 * @param string newPassword
+	 * @param string newPasswordConfirmation
+	 * @return Promise<void>
+	 */
+	public async changePassword(currentPassword: string, newPassword: string, newPasswordConfirmation: string): Promise<void> {
+		return new Promise((resolve, reject) => {
+			this.endpoint = 'auth/change-password';
+
+			this.setHeader('Authorization', `Bearer ${this.token}`);
+
+			this.post({
+				current_password: currentPassword,
+				new_password: newPassword,
+				new_password_confirmation: newPasswordConfirmation,
+			})
+				.then((request: Request) => {
+					resolve();
+				})
+				.catch((request: Request) => {
+					const errorData = this.handleError(request.response?.data || {});
+					reject(errorData);
+				});
+		});
+	}
+
+	/**
 	 * Login via basic
 	 *
 	 * @param string provider
@@ -125,6 +154,8 @@ export class Authentication extends Model.Base {
 
 				try {
 					const userModel = await this.loginWithToken(token);
+
+					// @todo these should be going through the event bus
 					this.dispatch('login:success', { userModel });
 				} catch (e) {
 					this.dispatch('login:failure', { error: e });

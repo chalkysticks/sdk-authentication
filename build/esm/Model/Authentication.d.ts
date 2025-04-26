@@ -12,6 +12,7 @@ export declare class Authentication extends Model.Base {
     get jwt(): Jwt;
     get user(): Model.User;
     isLoggedIn(): boolean;
+    changePassword(currentPassword: string, newPassword: string, newPasswordConfirmation: string): Promise<void>;
     login(email: string, password: string): Promise<Model.User>;
     loginWithToken(token: string): Promise<Model.User>;
     loginSocial(provider?: string, redirectTo?: string): Promise<void>;
