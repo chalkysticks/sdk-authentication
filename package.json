@@ -5,7 +5,8 @@
     },
     "dependencies": {
         "@chalkysticks/mrm-preset": "github:chalkysticks/mrm-preset",
-        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core"
+        "@chalkysticks/sdk-core": "github:chalkysticks/sdk-core",
+        "restmc": "git+https://github.com/mattkenefick/restmc.git"
     },
     "description": "ChalkySticks SDK core for web-based clients for User Authentication",
     "devDependencies": {
@@ -60,5 +61,5 @@
     },
     "type": "module",
     "types": "build/esm/index.d.ts",
-    "version": "1.7.7"
+    "version": "1.7.8"
 }
