@@ -1,6 +1,6 @@
 import * as OAuth from '../Service/OAuth';
 import { Jwt } from './Jwt';
-import { Model, Provider, Request } from '@chalkysticks/sdk-core';
+import { Event, Model, Provider, Request } from '@chalkysticks/sdk-core';
 
 /**
  * @type interface
@@ -248,6 +248,13 @@ export class Authentication extends Model.Base {
 		this.trigger('login', { userModel });
 		this.trigger('success', { userModel });
 
+		// Event bus
+		Event.Bus.dispatch('login', {
+			token: token,
+			user: response?.data.user,
+			userModel: userModel,
+		});
+
 		return userModel;
 	}
 
@@ -265,6 +272,11 @@ export class Authentication extends Model.Base {
 		// Trigger events
 		this.trigger('login:error', { error: errorData });
 		this.trigger('error', { error: errorData });
+
+		// Event bus
+		Event.Bus.dispatch('login:error', {
+			error: errorData,
+		});
 
 		return errorData;
 	}
